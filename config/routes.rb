@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :pictures
+  #resources :pictures
+  get '/pictures/:id', to: 'pictures#show'
+  resources :pictures do
+    put :tagCharacter, on: :collection
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

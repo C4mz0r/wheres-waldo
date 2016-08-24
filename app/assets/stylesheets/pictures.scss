@@ -1,3 +1,11 @@
 // Place all the styles related to the Pictures controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#menu {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 200px;
+  background-color: red;
+}
