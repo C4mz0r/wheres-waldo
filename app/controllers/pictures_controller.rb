@@ -22,4 +22,13 @@ class PicturesController < ApplicationController
     end
   end
   
+  def charactersToFind
+    @currentPicture = 1; # need function...
+    @picture = Picture.find(@currentPicture);
+    @people = @picture.characters.where(:isFound => false)
+    respond_to do |format|
+      format.json { render :json => @people.map{ |p| p.name }, :status => 200 }
+    end
+  end
+  
 end
