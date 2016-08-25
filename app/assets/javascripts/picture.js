@@ -32,7 +32,7 @@ var showMessage = function(x, y, message, classname) {
 		msg.removeClass(classname);
 		msg.hide();
 	};
-	window.setTimeout(func, 2000);
+	window.setTimeout(func, 5000);
 	
 };
 
@@ -60,10 +60,13 @@ $(function(){
 			dataType: 'json',
 			data: {name: characterName, xPosition: lastX, yPosition: lastY},
 			complete: function(response) {
-				if (response.responseJSON == true)
-				  showMessage(lastX, lastY, 'You found ' + characterName, "success");			
-				else
+				if (response.responseJSON == true) {
+				  showMessage(lastX, lastY, 'You found ' + characterName, "success");
+				  $("#"+characterName).removeClass(".not-found").addClass("found");		
+				}
+				else {
 				  showMessage(lastX, lastY, "That's not " + characterName, "failure");
+				}
 			}			
 		});
 	});	

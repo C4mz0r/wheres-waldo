@@ -30,3 +30,24 @@
 .failure {
   background-color: palevioletred;
 }
+
+.character {
+  height: 100px;
+}
+
+.not-found {
+  border: 10px solid red;
+}
+
+.found {
+  border: 10px solid green;
+}
+
+#char-left {
+  float:left;
+  width: 6%;
+}
+
+#picture {
+ float: left;  
+}

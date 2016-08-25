@@ -1,5 +1,11 @@
-
 <h1><%= @picture.title %></h1>
-<%= image_tag(@picture.imageFile) %>
+<div id="char-left">
+	<% @picture.characters.each do |character| %>
+		<%= image_tag(character.name+".jpeg", class: ["character", (character.isFound ? "found" : "not-found") ], id: character.name) %>
+	<% end %>	
+</div>
+
+<%= image_tag(@picture.imageFile, id: "picture") %>
+
 <%= content_tag(:div, nil, id: :menu)%>
 <%= content_tag(:div, nil, id: :message)%>
