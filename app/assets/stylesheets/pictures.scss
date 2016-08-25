@@ -51,3 +51,10 @@
 #picture {
  float: left;  
 }
+
+ul {
+  list-style-type: none;
+}
+li:hover {
+  background-color: lightblue;
+}
