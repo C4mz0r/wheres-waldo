@@ -9,8 +9,31 @@ var showContextMenu = function(x, y) {
 		menu.empty();
 		menu.append(content);		
 		menu.css("left", x);
-		menu.css("top", y);
+		menu.css("top", y);		
 		menu.show();
+		
+		var func = function() {
+			menu.hide();
+		};
+		
+		window.setTimeout(func, 3000);		
+};
+
+var showMessage = function(x, y, message, classname) {
+	var msg = $("#message");
+	msg.empty();
+	msg.append(message);
+	msg.css("left", x);
+  msg.css("top", y);
+  msg.addClass(classname);	
+	msg.show();	
+	
+	var func = function() {
+		msg.removeClass(classname);
+		msg.hide();
+	};
+	window.setTimeout(func, 2000);
+	
 };
 
 $(function(){
@@ -30,6 +53,7 @@ $(function(){
 	
 	$("#menu").on("click", "li", function(event){		
 		var characterName = $(this).text();		
+		$("#menu").hide();
 		$.ajax({
 			url:"/pictures/tagCharacter",
 			type: 'PUT',
@@ -37,12 +61,11 @@ $(function(){
 			data: {name: characterName, xPosition: lastX, yPosition: lastY},
 			complete: function(response) {
 				if (response.responseJSON == true)
-				  alert('You found ' + characterName);			
+				  showMessage(lastX, lastY, 'You found ' + characterName, "success");			
 				else
-				  alert("That's not " + characterName);
+				  showMessage(lastX, lastY, "That's not " + characterName, "failure");
 			}			
 		});
-	});
-	
+	});	
 });
 
