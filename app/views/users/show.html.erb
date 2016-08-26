@@ -1,4 +1,5 @@
 <p>Welcome, <%= @user.email %>.</p>
+<%= link_to 'Start a new Puzzle', pictures_new_path %>
 <p>Here are your puzzles:</p>
 <ul>
 	<% @user.pictures.each do |p|%>
