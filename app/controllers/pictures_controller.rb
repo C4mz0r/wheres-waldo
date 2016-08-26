@@ -1,7 +1,6 @@
 class PicturesController < ApplicationController
     
   def show
-    #byebug
     @picture = Picture.find(params[:id])
     session[:current_picture_id] = params[:id]
   end
@@ -10,19 +9,20 @@ class PicturesController < ApplicationController
     @picture = Picture.new
   end
   
+  # Create the picture puzzle for the current_user (since users need to have
+  # their own copy of the puzzles and progress)
   def create
-    #byebug    
     @picture = Picture.BuildPicture(current_user, picture_params[:title])
     if (@picture.save)
-      #byebug
       redirect_to @picture
     else
       render 'new'
     end
   end
   
-  def tagCharacter
-    #byebug
+  # Sets the character as found if he was properly clicked and
+  # identified in the picture.
+  def tagCharacter    
     @currentPicture = session[:current_picture_id]
     @picture = Picture.find(@currentPicture);
     @person = @picture.characters.find_by_name(params[:name])
@@ -41,8 +41,8 @@ class PicturesController < ApplicationController
     end
   end
   
+  # Determine the characters that still need to be found in the picture
   def charactersToFind
-    #byebug
     @currentPicture = session[:current_picture_id]
     @picture = Picture.find(@currentPicture);
     @people = @picture.characters.where(:isFound => false)
@@ -51,21 +51,9 @@ class PicturesController < ApplicationController
     end
   end
   
-  
-  
   private
     def picture_params
       params.require(:picture).permit(:title)
     end
-    
-    
-    
-    #def set_current_picture_id(value)
-    #  @currentPictureId = value
-    #end
-    
-    #def get_current_picture_id
-    #  @currentPictureId
-    #end
   
 end

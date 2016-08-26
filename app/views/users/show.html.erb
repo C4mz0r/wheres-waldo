@@ -1,2 +1,9 @@
-Here is the show page for user.
+<p>Welcome, <%= @user.email %>.</p>
+<p>Here are your puzzles:</p>
+<ul>
+	<% @user.pictures.each do |p|%>
+		<li><%= link_to p.title, p %></li>
+	<% end %>
+</ul>
+
 
