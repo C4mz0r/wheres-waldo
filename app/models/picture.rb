@@ -21,6 +21,13 @@ class Picture < ActiveRecord::Base
       @pic.characters.build(name: "Wenda", xPosition: 1125, yPosition: 353, isFound: false)
       @pic.characters.build(name: "Odlaw", xPosition: 139, yPosition: 303, isFound: false)
       @pic.characters.build(name: "Wizard", xPosition: 382, yPosition: 303, isFound: false)      
+      return @pic          
+    when 'Department Store'      
+      @pic = user.pictures.build(title: pictureTitle, imageFile: "department-store.jpg")
+      @pic.characters.build(name: "Waldo", xPosition: 593, yPosition: 156, isFound: false)
+      @pic.characters.build(name: "Wenda", xPosition: 418, yPosition: 645, isFound: false)
+      @pic.characters.build(name: "Odlaw", xPosition: 278, yPosition: 637, isFound: false)
+      @pic.characters.build(name: "Wizard", xPosition: 965, yPosition: 41, isFound: false)      
       return @pic      
     end
   end
