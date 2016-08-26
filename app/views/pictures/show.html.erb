@@ -5,7 +5,7 @@
 	<% end %>	
 </div>
 
-<%= image_tag(@picture.imageFile, id: "picture") %>
+<%= image_tag(@picture.imageFile, id: "picture", :"data-id" => @picture.id) %>
 
 <%= content_tag(:div, nil, id: :menu)%>
 <%= content_tag(:div, nil, id: :message)%>

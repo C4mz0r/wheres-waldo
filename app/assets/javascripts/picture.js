@@ -70,7 +70,8 @@ $(function(){
 	});
 	
 	$("#menu").on("click", "li", function(event){		
-		var characterName = $(this).text();		
+		var characterName = $(this).text();	
+			
 		$("#menu").hide();
 		$.ajax({
 			url:"/pictures/tagCharacter",

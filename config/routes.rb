@@ -1,7 +1,21 @@
 Rails.application.routes.draw do
   
+  devise_for :users
+  devise_scope :user do
+    authenticated :user do
+      root 'users#show', as: :authenticated_root
+    end
+    
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end    
+  end
+  
+  get '/users/:id', to: 'users#show'
+  
   #resources :pictures
   get '/pictures/charactersToFind', to: 'pictures#charactersToFind'
+  get '/pictures/new', to: 'pictures#new'
   get '/pictures/:id', to: 'pictures#show'  
   resources :pictures do
     put :tagCharacter, on: :collection    
